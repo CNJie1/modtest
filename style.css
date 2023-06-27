@@ -1,0 +1,117 @@
+#menubox { 
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 490px;
+  height: 470px;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  border: 30px  #ff0000;
+  cursor: default;
+  border-radius: 6px;
+  overflow-y: auto;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  }
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  
+  .button {
+        display: inline-block;
+        padding: 8px 3px;
+        background-color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
+        border:rgb(0, 0, 0);
+        border-radius: 0px;
+        cursor: move;
+         margin: 4x;  /* 添加此选项以在按钮之间创建间隙 */
+      }
+  #menuview {
+  
+  padding: 20x;
+  cursor: pointer;
+  z-index: 10;
+  border: 5px  #ffffff;
+  background-color: #C3BDBB;
+  color: rgb(0, 0, 0);
+  }
+
+  label {
+    color: rgb(255, 255, 255);
+    font-family: 'Lato', Lato;  /* 功能字体颜色 */
+  }
+
+  body {font-family: Lato;}
+
+/* 设置选项卡样式 */
+.tab {
+  overflow: hidden;
+  border: 8px solid;
+  border-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523)2 2 2 2;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* 设置选项卡内按钮的样式 */
+.tab button {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523);
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  transition: 0.7s;
+  font-size: 14.52px;
+}
+
+/* 更改按钮的背景颜色r */
+.tab button:hover {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  
+}
+
+/* 创建活动/当前选项卡链接类 */
+.tab button.active {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+/* 设置选项卡内容的样式 */
+.tabcontent {
+  display: none;
+  padding: 12px 15px;
+  border: 0px solid #ccc;
+  border-top: none;
+}
+
+/* 标签的左右滑动 */
+.tablinks {
+	width: 80px;
+}
+
+.tab button:focus {
+	outline: none;
+}

@@ -62,12 +62,38 @@
   overflow: hidden;
   border: 8px solid;
   border-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523)2 2 2 2;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start; 
+    animation-name: rainbow-border; /* 启用动画 */
+    animation-duration: 1s; /* 持续时间 */
+    animation-timing-function: linear; /* 时间函数 */
+    animation-iteration-count: infinite; /* 循环次数（无限） */
+}
+
+@keyframes rainbow-border {
+  0% { /* 初始状态 */
+    border-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523) 2 2 2 2;
+  }
+
+  20% {
+    border-image: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab, #29d523, #ee7752) 2 2 2 2;
+  }
+
+  40% {
+    border-image: linear-gradient(-45deg, #23a6d5, #23d5ab, #29d523, #ee7752, #e73c7e) 2 2 2 2;
+  }
+
+  60% {
+    border-image: linear-gradient(-45deg, #23d5ab, #29d523, #ee7752, #e73c7e, #23a6d5) 2 2 2 2;
+  }
+
+  80% {
+    border-image: linear-gradient(-45deg, #29d523, #ee7752, #e73c7e, #23a6d5, #23d5ab) 2 2 2 2;
+  }
+
+  100% { /* 终止状态 */
+    border-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523) 2 2 2 2;
+  }
 }
 
 /* 设置选项卡内按钮的样式 */

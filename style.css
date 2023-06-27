@@ -105,6 +105,9 @@
   padding: 12px 15px;
   border: 0px solid #ccc;
   border-top: none;
+
+overflow-y: auto;
+    max-height: 300px;
 }
 
 /* 标签的左右滑动 */

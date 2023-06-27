@@ -1,32 +1,30 @@
 //Jie阻止查看源代码方案
-document.addEventListener("keydown", function (event){
-    if (event.ctrlKey){
-      event.preventDefault();
+document.onkeydown = function(e) {
+    if(event.keyCode == 123) {
+      return false;
     }
-    if(event.keyCode == 123){
-      event.preventDefault();
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+      return false;
     }
-  });
-  
-//禁用F12
-window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
-    // 判断是否按下F12，F12键码为123
-    if (event.keyCode == 123) {
-    event.preventDefault(); // 阻止默认事件行为
-    window.event.returnValue = false;
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+      return false;
     }
-}
-
-//禁用调试工具
-var threshold = 160; // 打开控制台的宽或高阈值
-// 每秒检查一次
-var check = setInterval(function() {
-    if (window.outerWidth - window.innerWidth > threshold || 
-        window.outerHeight - window.innerHeight > threshold) {
-        // 如果打开控制台，则刷新页面
-        window.location.reload();
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+      return false;
     }
-},1000)
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
+      return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'H'.charCodeAt(0)){
+      return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)){
+      return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'E'.charCodeAt(0)){
+      return false;
+    }
+  }
 //屏蔽右键菜单
 document.oncontextmenu = function (event){
     if(window.event){
@@ -108,32 +106,21 @@ document.onpaste = function (event){
         return false;
     }
 }
-/*测试版本
-function fuckyou(){
-    window.close(); //关闭当前窗口(防抽)
-   window.location="about:blank"; //将当前窗口跳转置空白页
-}
-function ck() {
-  console.profile();
-  console.profileEnd();
-  //我们判断一下profiles里面有没有东西，如果有，肯定有人按F12了，没错！！
-  if(console.clear) { console.clear() };
-                      if (typeof console.profiles =="object"){
-  return console.profiles.length > 0;
-                      }
-}
-function hehe(){
-if( (window.console && (console.firebug || console.table && /firebug/i.test(console.table()) )) || (typeof opera == 'object' && typeof opera.postError == 'function' && console.profile.length > 0)){
-fuckyou();
-}
-if(typeof console.profiles =="object"&&console.profiles.length > 0){
-fuckyou();
-}
-}
-hehe();
-window.onresize = function(){
-if((window.outerHeight-window.innerHeight)>200)
-//判断当前窗口内页高度和窗口高度，如果差值大于200，那么呵呵
- fuckyou();
-}*/
+//测试版本-测试时也要屏蔽这行代码 不然会让你无法打开F12开发人员
+document.onkeydown = function (event) {
+  // 判断是否按下F12键，F12键码为123
+  if (event.keyCode == 123) {
+    // 跳转到指定页面
+    window.location.href = "https://example.com/debug.html";
+  }
+};
 
+var threshold = 400; // 打开控制台的宽或高阈值
+// 每秒检查一次
+var check = setInterval(function() {
+    if (window.outerWidth - window.innerWidth > threshold || 
+        window.outerHeight - window.innerHeight > threshold) {
+        // 如果打开控制台，则刷新页面
+       window.location.href = "https://example.com/debug.html";
+    }
+},1000)

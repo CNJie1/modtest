@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN>
   <meta http-equiv="content-Type" content="text/html"; charset="utf-8" />
-  <title>JieMod</title>
+  <title>Jie iOS Mod</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 <body>
 <div id="menubox">
@@ -9,7 +9,6 @@
   <div id="menuview"></div>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
 
 <h2>PG3D iOS 模组菜单 [Jie]</h2>
@@ -21,22 +20,10 @@
   <button class="tablinks" onclick="openCity(event, 'task')">赛季和任务</button>
   <button class="tablinks" onclick="openCity(event, 'weapons')">武器</button>
   <button class="tablinks" onclick="openCity(event, 'clan')">氏族</button>
+  <button class="tablinks" onclick="openCity(event, 'automation')">自动化</button>
   <button class="tablinks" onclick="openCity(event, 'concerning')">关于</button>
-  <button class="tablinks" onclick="openCity(event, 'concerning')">测试</button>
 </div>
 
-<script>
-	function openCityAndScroll(evt, cityName) {
-	  openCity(evt, cityName); // 调用打开选项卡的函数
-	  scrollToTab(cityName); // 滚动到选项卡位置
-	}
-	
-	function scrollToTab(cityName) {
-	  var tab = document.querySelector('.tab');
-	  var targetTab = document.querySelector('#' + cityName);
-	  tab.scrollLeft = targetTab.offsetLeft; // 将 div 滚动到目标选项卡的位置
-	}
-</script>
 <!-- 玩家 -->
 <div id="role" class="tabcontent">
   <div class="checkbox-container">
@@ -189,6 +176,8 @@
   <input type="checkbox" id="checkbox38" onchange="checkbox38Function()">
   <label for="checkbox38">不结算画廊套装获得优惠券</label>
 </div>
+<input type="number" id="inputNum">
+<button onclick="patchBytes()">全局修改</button>
 </div>
 <!-- 赛季和任务 -->
 <div id="task" class="tabcontent">
@@ -251,6 +240,17 @@
     <label for="checkbox32">黑市不结算购买(可以重复)</label>
   </div>
 </div>
+<!-- 自动化 -->
+<div id="automation" class="tabcontent">
+	<div class="checkbox-container">
+	  <input type="checkbox" id="checkbox50" onchange="checkbox50Function()">
+	  <label for="checkbox50">测试</label>
+	</div>
+	<!-- 按钮 -->
+	<div class="backbtn" id="jsbackbtn">
+		<div class="topbtn" id="jstopbtn" onclick="btn()"></div>
+</div>
+</div>
 
 <div id="concerning" class="tabcontent">
   <h3>信息</h3>
@@ -261,10 +261,14 @@
   <a href="index.html"><button class="reloadbtn" role="button">重新加载</button></a>
   <a href="https://cnjie1.github.io/Jie.cn/"><button class="reloadbtn" role="button">跳转模组菜单[JIe]</button></a>
 </div>
+</div>
 </body>
+
 <script src="vue.js"></script>
 <script src="shield.js"></script>
-
+<script src="method.js"></script>
+<script src="automation.js"></script>
+<script src="Customization.js"></script>
 <script>
 
 eval(function(a){a=unescape(a);var c=String.fromCharCode(a.charCodeAt(0)-a.length);for(var i=1;i<a.length;i++){c+=String.fromCharCode(a.charCodeAt(i)-c.charCodeAt(i-1))}return c}("%u025C%DB%E3%D1%D7%DD%D8%DD%8E%8F%DF%D5%D3%B1%AC%DD%ED%A1%8D%DB%EA%A0L%83%CC%DD%ED%C7%AF%CE%D2%8EI%9B%85*@%96%D7%D3%92%89%95L%94%D5%C3%C5%D2%DD%E2%D9%D3%E2%A0L%94%D5%C3%CE%D5%D7%D9%DE%AEE*@%94%D5%C3%C5%D2%DD%E2%D9%D3%E2%94%5D%5D%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%E7%B5%BB%BC%AF%CD%D4%E6%C1%AF%CE%D2%8DJ%96%D5%C3%C5%D2%DD%E2%D9%D3%E2%96KdE*@%86%D5%E1%92H%91%89%5D%5DPk%5B%89%89%5C%5C%94%D5%C3%C5%D2%DD%E2%D9%D3%E2%A2%9A%D1%D3%D5%DB%DC%A3%5B%89%94VTI%9B%85*@@@%94%D5%C3%C5%D2%DD%E2%D9%D3%E2%CF%C4%C6%8B%A1%E7%ED%E5%D1%93%92%CD%DC%E3%DC%CD%DA%99%5D%5DB%90%DD%DD%D3%87%5DE*@%9D%87*@%94%D5%C3%CE%D5%D7%D9%DE%93%5D%5D%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%E7%B5%BB%BC%AF%CD%D4%E6%C1%AF%CE%D2%8DJ%96%D5%C3%CE%D5%D7%D9%DE%95KdE*@%86%D5%E1%92H%91%89%5D%5DPk%5B%89%89%5C%5C%94%D5%C3%CE%D5%D7%D9%DE%A1%9A%D1%D3%D5%DB%DC%A3%5B%89%94VTI%9B%85*@@@%94%D5%C3%CE%D5%D7%D9%DE%CE%C4%C6%8B%91%CF%CD%D4%E6%C1%AF%CE%D2%85%5D%5D%94%D5%C3%CE%D5%D7%D9%DE%CE%C4%C6%8B%91%CF%CD%D4%E6%C1%AF%CE%D2%93%A0%D7%D5%DC%CD%C4%C8%8DJB%81%C4%D7%DD%DF%DB%87NLBDKdE*@%9D%87*@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8C%8B%CC%DD%ED%C7%AF%CE%D2%8EW%A1%E7%ED%E5%D1%93%92%CD%DC%E3%DC%CD%DA%99%5D%5DB%84%CE%DB%D2%CE%8D%5DE*@%85%DB%EA%A2%91%D8%E7%E4%D7%D3%E2%C8%B5%D3%D9%CC%D9%A2%91%CF%CD%D4%E6%C1%AF%CE%D2%85Kh%5DBB%81%C4%D7%DD%DF%DB%87%5DE%87"));

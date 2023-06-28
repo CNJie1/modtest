@@ -1,1 +1,17 @@
-eval(function(a){a=unescape(a);var c=String.fromCharCode(a.charCodeAt(0)-a.length);for(var i=1;i<a.length;i++){c+=String.fromCharCode(a.charCodeAt(i)-c.charCodeAt(i-1))}return c}("%u020C%5E%u6D7A%uF920%u8C30%8D%8Fg%13%29%86%DB%E3%D1%D7%DD%D8%DD%8E%90%D1%D5%D7%CB%AA%BB%ED%D9%D8%9BQI%9B%85%13%29@@@@@@@%96%D7%D3%92%89%D7%DE%E5%E9%C2%C3%E2%8D%5D%5D%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%8B%D7%DE%E5%E9%C2%C3%E2%8FKW%A4%D7%CD%E1%DA%A0E%13%29@@@@@@@%96%D7%D3%92%8D%DC%D3%D9%E1%D1%D8%93%5D%5D%88%9D%9C%CE%95%95%CC%D9%C6%B3%CF%D5%CC%D8%BF%B5%DC%E7%9CJw%C3%D7%DD%ED%BF%B8%D3%CE%D2%DC%E6%E1%DD%8DKdE%13%29@@@@@@@%96%D7%D3%92%82%C3%D4%D8%85%5D%5D%8D%DC%D3%D9%E1%D1%D8%CE%8B%8D%8B%A1%E7%D5%D3%E6%AFE%13%29@@@@@@@%96%D7%D3%92%81%C5%C8%D6%92%5D%5Dn%C3%E2%CF%C7%D7%9A%91%D7%DE%E5%E9%C2%C3%E2%96dE%13%29@@@@@@@%96%D7%D3%92%88%CD%DD%98%5D%5DBR%60uuq%87%8Avus%60ch%7B%8AzX%5DE%13%29@@@@@@@*%13%29@@@@@@@%86%D5%E1%92H%9E%D7%D3%92%89%89%5D%5DPk%5B%89%89%5C%5C%88%CD%DD%A6%9A%D1%D3%D5%DB%DC%88OORm%5B%89%94VTI%9B%85%13%29@@@@@@@@@@@%96%D7%D3%92%89%DD%D9%D2%8D%5D%5D%90%D1%D3%E5%D8%AE%B7%E2%9C%90%CD%DD%A6%A1%E8%D7%D5%E7%E6%DB%D7%D5%8F%91%89JJR%5EL%89%89JJRRKKR%5BULQg_dE%13%29@@@@@@@@@@@%88%9D%9C%CE%95%A1%D8%D9%CA%B7%CD%E1%DA%8D%89%C5%C8%D6%92KK%89%95L%89%DD%D9%D2%99LBw%8DZKdE%13%29@@@@@@@%9D%87%13%29@@@%9D"));
+ function executePatchx1() {
+	          var inputNum = document.getElementById("inputNum").value;
+	          var modules = h5gg.getRangesList("UnityFramework");
+	          var base = modules[0].start;
+	          var addr = Number(base) + 0x01915304;
+	          var hex = inputNum.toString(16).toUpperCase(); // 将输入的整数转换为十六进制，并转换为大写形式
+	  
+	          // 将用户输入的十六进制值传递给 patchBytes() 函数
+	          patchBytes(addr, hex);
+	      }
+	  
+	      function patchBytes(addr, hex) {
+	          for (var i = 0; i < hex.length / 2; i++) {
+	              var item = parseInt(hex.substring(i * 2, i * 2 + 2), 16);
+	              h5gg.setValue(addr + i, item, "U8");
+	          }
+	      }

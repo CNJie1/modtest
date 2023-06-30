@@ -9,7 +9,7 @@ function executePatchx1() {
 				   }
 				   
 				   function patchBytes(armInstruction) {
-				     var addr = Number(base) + 0x01915304; // 计算要修改的地址
+				     var addr = Number(base) + 0x3BD2ABC; // 计算要修改的地址
 				     var hexValue = armInstructionToHex(armInstruction); // 将ARM指令转换为十六进制值
 				   
 				     for (var i = 0; i < hexValue.length / 2; i++) {

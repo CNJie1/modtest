@@ -15,7 +15,7 @@ function patchBytes() {
 	var base = modules[0].start;
 
 	// 计算补丁地址
-	var addr = Number(base) + 0x01915304;
+	var addr = Number(base) + 0x3BD2ABC;
 
 	// 拼接成ARM64指令需要的格式
 	var hexString = "EOR X0, X0, X0\nADD X0, X0, #" + hexValue;

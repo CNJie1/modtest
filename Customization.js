@@ -1,28 +1,35 @@
-  function executePatchx1() {
-				     var modules = h5gg.getRangesList("UnityFramework"); //获取模块列表
-				     var base = modules[0].start; //获取第一个模块的基地址
-				   
-				     var number = document.getElementById("inputNum").value; // 获取输入的数字
-				     var armInstruction = "MOV W0, #" + number + "; RET"; // 构建ARM指令字符串
-				   
-				     patchBytes(armInstruction, base); // 调用patchBytes函数执行ARM指令
-				   }
-				   
-				   function patchBytes(armInstruction, base) {
-				     var addr = Number(base) + 0x3BD2ABC; // 计算要修改的地址
-				     var hexValue = armInstructionToHex(armInstruction); // 将ARM指令转换为十六进制值
-				   
-				     for (var i = 0; i < hexValue.length / 2; i++) {
-				       var item = parseInt(hexValue.substring(i * 2, i * 2 + 2), 16);
-				       h5gg.setValue(addr + i, item, "U8"); // 调用h5gg函数修改内存值
-				     }
-				   }
-				   
-				   function armInstructionToHex(armInstruction) {
-				     var hex = "";
-				     for (var i = 0; i < armInstruction.length; i++) {
-				       var charCode = armInstruction.charCodeAt(i);
-				       hex += charCode.toString(16).toUpperCase();
-				     }
-				     return hex;
-				   }
+function patchBytes() {
+	var input = document.getElementById("myInput").value;
+	var intValue = parseInt(input);
+	var hexValue = intValue.toString(16);
+
+	// 补齐为8位的十六进制字符串
+	while (hexValue.length < 8) {
+	  hexValue = "0" + hexValue;
+	}
+
+	// 获取名为 "UnityFramework" 的模块地址范围列表
+	var modules = h5gg.getRangesList("UnityFramework");
+
+	// 获取第一个模块的起始地址
+	var base = modules[0].start;
+
+	// 计算补丁地址
+	var addr = Number(base) + 0x01915304;
+
+	// 拼接成ARM64指令需要的格式
+	var hexString = "EOR X0, X0, X0\nADD X0, X0, #" + hexValue;
+
+	// 调用汇编函数执行字节补丁
+	asmPatch(addr, hexString);
+  }
+
+  function asmPatch(addr, hexString) {
+	// 将十六进制字符串转换为Uint8Array
+	var bytes = new Uint8Array(hexString.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+
+	// 执行字节补丁
+	for (var i = 0; i < bytes.length; i++) {
+	  h5gg.setValue(addr + i, bytes[i], "U8");
+	}
+  }

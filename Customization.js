@@ -1,14 +1,14 @@
-function executePatchx1() {
-	var modules = h5gg.getRangesList("UnityFramework"); //获取模块列表
-	var base = modules[0].start; //获取第一个模块的基地址
-	var number = document.getElementById("inputNum").value; // 获取输入的数字
-	var hexString = "~A8 CMP W0, #" + number; // 将数字拼接为ARM指令字符串
+  function executePatchx1() {
+				     var modules = h5gg.getRangesList("UnityFramework"); //获取模块列表
+				     var base = modules[0].start; //获取第一个模块的基地址
 				   
-		// 调用patchBytes函数执行ARM指令
-		patchBytes(hexString);
+				     var number = document.getElementById("inputNum").value; // 获取输入的数字
+				     var armInstruction = "MOV W0, #" + number + "; RET"; // 构建ARM指令字符串
+				   
+				     patchBytes(armInstruction, base); // 调用patchBytes函数执行ARM指令
 				   }
 				   
-				   function patchBytes(armInstruction) {
+				   function patchBytes(armInstruction, base) {
 				     var addr = Number(base) + 0x3BD2ABC; // 计算要修改的地址
 				     var hexValue = armInstructionToHex(armInstruction); // 将ARM指令转换为十六进制值
 				   

@@ -10,7 +10,7 @@ function patchBytes() {
 
 	var modules = h5gg.getRangesList("UnityFramework"); // 获取模块范围列表
 	var base = modules[0].start; // 运行时内存中的模块基地址
-	var addr = BigInt(base) + 0x3BBBCC4; // 偏移量
+	var addr = Number(base) + 0x3BBBCC4; // 偏移量
 
 	var hex = movHex + retHex; // 拼接转换后的指令
 

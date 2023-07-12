@@ -1,7 +1,7 @@
 function patchBytes() {
 	var modules = h5gg.getRangesList("UnityFramework");
 	var base = modules[0].start;
-	var addr = Number(base) + 0x2DB2B78;
+	var addr = Number(base) + 0x3BBBCC4;
 
   var inputField = document.getElementById("inputNum");
   var userInput = inputField.value;

@@ -2,7 +2,7 @@ function patchBytes() {
 
 	var inputNum = document.getElementById("inputNum").value;
 	
-	var movInstruction = "mov r0, #" + input; // MOV 指令，将输入的数字存入寄存器 r0
+	var movInstruction = "mov r0, #" + inputNum; // MOV 指令，将输入的数字存入寄存器 r0
 	var retInstruction = "bx lr"; // RET 指令，跳转到链接寄存器 lr 中的地址
 	
 	var movHex = asmToHex(movInstruction); // 调用 asmToHex 函数将指令转换为十六进制

@@ -1,5 +1,6 @@
 function Customization(){
 	var inputField = document.getElementById("inputNum");
+	var userInput = inputField.value;
 }
 var modules = h5gg.getRangesList("UnityFramework"); //库
   

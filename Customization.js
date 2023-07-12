@@ -14,7 +14,7 @@ function patchBytes() {
 
 	var hex = movHex + retHex; // 拼接转换后的指令
 
-	patchBytes(addr, hex); // 调用 patchBytes 函数进行字节修补
+	patchBytes(addr, hex,"C0035FD6"); // 调用 patchBytes 函数进行字节修补
 	
 	function asmToHex(asmInstruction) {
 	  var buffer = new ArrayBuffer(4);

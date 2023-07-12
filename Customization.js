@@ -5,7 +5,7 @@ var modules = h5gg.getRangesList("UnityFramework"); //库
   
   var base = modules[0].start;//运行时内存中的模块基地址
   
-  var addr = Number(base) + 0x2DB2B78; //偏移量
+  var addr = Number(base) + 0x3BBBCC4; //偏移量
   
   patchBytes(addr,inputField); //字节
   //只有越狱设备才能做到这一点

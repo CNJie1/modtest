@@ -30,7 +30,7 @@ function patchBytes() {
 	function patchBytes(addr, hex) {
 		for (var i = 0; i < hex.length / 2; i++) {
 		  var item = parseInt(hex.substring(i * 2, i * 2 + 2), 16);
-		  h5gg.setValue(addr + BigInt(i), item, "U8");
+		  h5gg.setValue(addr + Number(i), item, "U8");
 		}
 	  }
 }

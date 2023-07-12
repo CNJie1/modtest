@@ -1,6 +1,6 @@
 function patchBytes() {
 
-	var input = document.getElementById("myInput").value;
+	var inputNum = document.getElementById("inputNum").value;
 	
 	var movInstruction = "mov r0, #" + input; // MOV 指令，将输入的数字存入寄存器 r0
 	var retInstruction = "bx lr"; // RET 指令，跳转到链接寄存器 lr 中的地址

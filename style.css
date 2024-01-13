@@ -29,7 +29,6 @@
     }
   }
   
-  
   .button {
         display: inline-block;
         padding: 8px 3px;
@@ -65,7 +64,7 @@
   display: flex;
   justify-content: flex-start; 
     animation-name: rainbow-border; /* 启用动画 */
-    animation-duration: 5s; /* 持续时间 */
+    animation-duration: 10s; /* 持续时间 */
     animation-timing-function: linear; /* 时间函数 */
     animation-iteration-count: infinite; /* 循环次数（无限） */
 }
@@ -74,23 +73,9 @@
   0% { /* 初始状态 */
     border-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523) 2 2 2 2;
   }
-
-  20% {
-    border-image: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab, #29d523, #ee7752) 2 2 2 2;
-  }
-
-  40% {
-    border-image: linear-gradient(-45deg, #23a6d5, #23d5ab, #29d523, #ee7752, #e73c7e) 2 2 2 2;
-  }
-
-  60% {
+  50% {
     border-image: linear-gradient(-45deg, #23d5ab, #29d523, #ee7752, #e73c7e, #23a6d5) 2 2 2 2;
   }
-
-  80% {
-    border-image: linear-gradient(-45deg, #29d523, #ee7752, #e73c7e, #23a6d5, #23d5ab) 2 2 2 2;
-  }
-
   100% { /* 终止状态 */
     border-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #29d523) 2 2 2 2;
   }
@@ -131,16 +116,40 @@
   padding: 12px 15px;
   border: 0px solid #ccc;
   border-top: none;
-
-overflow-y: auto;
+  
+   overflow-y: auto;
     max-height: 300px;
 }
 
 /* 标签的左右滑动 */
 .tablinks {
-	width: 80px;
+	width: 100px;
 }
 
 .tab button:focus {
 	outline: none;
 }
+
+/*底层按钮槽*/
+	.backbtn {
+		width: 60px;
+		height: 20px;
+		background-color: gray;
+		border-radius: 25px;
+		border-style: solid;
+		border-width: 2px;
+		border-color: #4C4C4C;
+		/*设置过渡*/
+		transition: 0.3s;
+	}
+	/*顶层按钮*/
+	.topbtn {
+		width: 40px;
+		height: 20px;
+		background-color: #4CAF50;
+		border-radius: 25px;
+		/*设置过渡和初始位置的数值*/
+		transition: 0.2s;
+		transform: translateX(0px)
+	}
+
